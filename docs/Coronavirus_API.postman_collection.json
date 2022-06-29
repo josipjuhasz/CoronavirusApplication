@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "fd30efe7-3caa-4c31-8df7-200d77969cf2",
+		"name": "Coronavirus API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DayOneAllStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/dayone/country/croatia",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"dayone",
+						"country",
+						"croatia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/country/croatia",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"country",
+						"croatia"
+					]
+				},
+				"description": "Returns all the available countries, as well as the country slug and ISO2 value for per country requests.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "ByCountryTotalStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/country/croatia",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"country",
+						"croatia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CountryList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/countries",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "News",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://api.mediastack.com/v1/news?access_key=2124bbd4886ccfcaa4066eefbcd2bdba&keywords=corona&limit=25&offset=0",
+					"protocol": "http",
+					"host": [
+						"api",
+						"mediastack",
+						"com"
+					],
+					"path": [
+						"v1",
+						"news"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "2124bbd4886ccfcaa4066eefbcd2bdba",
+							"description": "YOUR_ACCESS_KEY"
+						},
+						{
+							"key": "keywords",
+							"value": "corona",
+							"description": "HC value - will give corona related news"
+						},
+						{
+							"key": "limit",
+							"value": "25",
+							"description": "HC value - will give 25 articles per page"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"description": "current page\n"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "The full set of available real-time news articles can be accessed using a simple API request to the mediastack API's news endpoint"
+			},
+			"response": []
+		},
+		{
+			"name": "Summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/summary",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"summary"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

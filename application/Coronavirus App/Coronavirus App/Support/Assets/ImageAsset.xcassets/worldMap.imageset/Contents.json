@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "worldMap.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

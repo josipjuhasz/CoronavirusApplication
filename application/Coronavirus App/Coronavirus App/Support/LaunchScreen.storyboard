@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment version="5376" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="worldMap" translatesAutoresizingMaskIntoConstraints="NO" id="Kyt-He-Gj5" userLabel="worldMap">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.55000000000000004" contentMode="scaleAspectFill" text="Coronavirus Tracker" textAlignment="center"  translatesAutoresizingMaskIntoConstraints="NO" id="DiO-km-hfe" userLabel="coronaVirusTracker">
+                                <rect key="frame" x="20" y="486" width="374" height="62"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="fw0-kw-UzC"/>
+                                </constraints>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="virus" translatesAutoresizingMaskIntoConstraints="NO" id="Qt8-l8-sOv">
+                                <rect key="frame" x="156.5" y="378" width="101" height="100"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FMH-mn-fhs"/>
+                        <color key="backgroundColor" red="0.10588235294117647" green="0.11764705882352941" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DiO-km-hfe" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="2fR-MS-Nxi"/>
+                            <constraint firstAttribute="trailing" secondItem="Kyt-He-Gj5" secondAttribute="trailing" id="2jh-qJ-6Tm"/>
+                            <constraint firstItem="DiO-km-hfe" firstAttribute="top" secondItem="Qt8-l8-sOv" secondAttribute="bottom" constant="8" id="3c7-QD-sHo"/>
+                            <constraint firstItem="Qt8-l8-sOv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9vV-RZ-q9Q"/>
+                            <constraint firstItem="Qt8-l8-sOv" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="EYW-kZ-xCx"/>
+                            <constraint firstAttribute="bottom" secondItem="Kyt-He-Gj5" secondAttribute="bottom" id="SqP-1y-yNB"/>
+                            <constraint firstItem="Kyt-He-Gj5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bxe-Tx-M6e"/>
+                            <constraint firstAttribute="trailing" secondItem="DiO-km-hfe" secondAttribute="trailing" constant="20" id="eY1-ov-wNe"/>
+                            <constraint firstItem="Kyt-He-Gj5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="xbu-hw-LMP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="virus" width="101" height="100"/>
+        <image name="worldMap" width="375" height="812"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
