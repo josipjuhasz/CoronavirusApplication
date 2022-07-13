@@ -11,8 +11,14 @@ struct CountrySelectionView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.presentationMode) private var presentationMode
-    @StateObject private var viewModel: CountrySelectionViewModel = CountrySelectionViewModel(repository: CountriesSelectionRepositoryImpl())
+    @StateObject private var viewModel: CountrySelectionViewModel
     @Binding var useCase: UseCaseSelection
+    
+    init(viewModel: CountrySelectionViewModel, useCase: Binding<UseCaseSelection>){
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self._useCase = useCase
+        initAppereance()
+    }
     
     private func initAppereance(){
         if let font = UIFont(name: "Montserrat-Bold", size: 20) {
@@ -21,7 +27,6 @@ struct CountrySelectionView: View {
     }
     
     var body: some View {
-        
         if let error = viewModel.error {
             errorViewBuilder(error)
                 .navigationBarBackButtonHidden(true)
@@ -37,37 +42,42 @@ struct CountrySelectionView: View {
             }
         } else {
             VStack() {
-                VStack() {
-                    renderCountrySelectionTextField()
-                    CountryListItemView(icon: "🌎", name: "Worldwide")
-                        .onTapGesture {
-                            DispatchQueue.main.async {
-                                useCase = .worldwide
-                                presentationMode.wrappedValue.dismiss()
+                if let countries = viewModel.countries {
+                    VStack() {
+                        textField()
+                        CountryListItemView(icon: "🌎", name: "Worldwide")
+                            .onTapGesture {
+                                DispatchQueue.main.async {
+                                    viewModel.handleListItemOnTapGesture(useCase: &useCase, value: .worldwide)
+                                    presentationMode.wrappedValue.dismiss()
+                                }
                             }
-                        }
-                    Divider()
-                        .padding([.leading, .trailing])
-                    renderCountrySelectionCountriesList()
-                    Spacer()
+                        
+                        Divider()
+                            .padding([.leading, .trailing])
+                        
+                        list(data: countries)
+                        Spacer()
+                    }
+                } else {
+                    ErrorView(.general)
                 }
             }
             .navigationOverride(colorScheme: colorScheme) {
                 presentationMode.wrappedValue.dismiss()
             }
-            .navigationBarTitle(Text(verbatim: .chooseCountryTitle), displayMode: .inline)
+            .navigationBarTitle(
+                Text(verbatim: .chooseCountryTitle), displayMode: .inline
+            )
             .addAppThemeBackground()
         }
     }
 }
 
 extension CountrySelectionView {
-    
     @ViewBuilder
-    private func renderCountrySelectionTextField() -> some View {
-        
+    private func textField() -> some View {
         HStack {
-            
             Image(systemName: "magnifyingglass")
                 .resizable()
                 .frame(width: 25, height: 25)
@@ -83,9 +93,8 @@ extension CountrySelectionView {
     }
     
     @ViewBuilder
-    private func renderCountrySelectionCountriesList() -> some View {
-        
-        if viewModel.countries.isEmpty {
+    private func list(data: [CountryDetails]) -> some View {
+        if data.isEmpty {
             HStack {
                 Text("No results found")
                     .commonFont(.regular, style: .title2)
@@ -94,11 +103,11 @@ extension CountrySelectionView {
             }
         } else {
             ScrollView {
-                ForEach(viewModel.countries) { country in
+                ForEach(data) { country in
                     CountryListItemView(icon: country.icon, name: country.name)
                         .onTapGesture {
                             DispatchQueue.main.async {
-                                useCase = .country(country.slug)
+                                viewModel.handleListItemOnTapGesture(useCase: &useCase, value: .country(country.slug))
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }
@@ -109,14 +118,28 @@ extension CountrySelectionView {
     
     @ViewBuilder
     private func errorViewBuilder(_ error: ErrorType) -> some View {
-        
         switch error {
         case .general:
-            ErrorView(errorType: .general)
+            ErrorView(.general) {
+                viewModel.errorActionCallback()
+            }
         case .noInternetConnection:
-            ErrorView(errorType: .noInternetConnection)
+            ErrorView(.noInternetConnection) {
+                viewModel.errorActionCallback()
+            }
         case .empty:
             EmptyView()
         }
+    }
+}
+
+struct CountrySelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        CountrySelectionView(
+            viewModel: CountrySelectionViewModel(
+                repository: CountriesSelectionRepositoryImpl()
+            ),
+            useCase: .constant(.worldwide)
+        )
     }
 }

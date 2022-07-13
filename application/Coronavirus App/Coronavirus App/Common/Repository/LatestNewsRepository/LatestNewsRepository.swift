@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol LatestNewsRepository {
-    func getLatestNews(offset: Int) -> AnyPublisher<LatestNewsResponseItem, ErrorType> 
+    func getLatestNews(offset: Int) -> AnyPublisher<Result<LatestNewsResponseItem, ErrorType>, Never>
 }

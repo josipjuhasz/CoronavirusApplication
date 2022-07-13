@@ -16,7 +16,7 @@ enum RestEndpoints {
     
     static let covidHost = "api.covid19api.com"
     static let newsHost = "api.mediastack.com/v1/news?"
-    static let newsAccessKey = "access_key=8d6632b454a74906aa58dfa2eb9ff5ca"
+    static let newsAccessKey = "access_key=5c0f6cbe3a0a9ef5d0c47087c6f262fd"
     
     static var ENDPOINT_COVID: String {
         return "https://" + covidHost

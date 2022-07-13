@@ -35,7 +35,7 @@ extension View {
     
     func addAppThemeBackground() -> some View {
         ZStack {
-            Color.background
+            Color.appBackground
                 .ignoresSafeArea()
             
             self

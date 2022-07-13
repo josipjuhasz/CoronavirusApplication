@@ -29,6 +29,12 @@ struct LatestNewsDetails: Codable, Hashable, Identifiable {
         case image = "image"
         case date = "published_at"
     }
+    
+    var passedTime: String {
+        let dateString = DateUtils.parseToDate(date)
+        let formattedDate = RelativeDateTimeFormatter.standard.localizedString(for: dateString, relativeTo: Date())
+        return "\(source) • \(formattedDate)"
+    }
 }
 
 struct PaginationInformation: Codable {

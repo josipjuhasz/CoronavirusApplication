@@ -9,12 +9,12 @@ import SwiftUI
 import MapKit
 
 class MapManager: NSObject, MKMapViewDelegate, UIGestureRecognizerDelegate {
-    var parentView: MapView
+    
+    let parentView: MapView
     
     private var gestureRecognizer = UITapGestureRecognizer()
-    var enableTapGesture = false
-    
     private let locationManager = LocationManager()
+    var enableTapGesture = false
     
     init(_ map: MapView) {
         self.parentView = map
@@ -43,7 +43,8 @@ class MapManager: NSObject, MKMapViewDelegate, UIGestureRecognizerDelegate {
     
     @objc func tapHandler(_ gesture: UITapGestureRecognizer) {
         if enableTapGesture {
-            parentView.viewModel.initPipelines()
+            parentView.viewModel.onUseCaseSelectionChange(.country("india"))
+            parentView.viewModel.onUseCaseSelectionChange(.worldwide)
             enableTapGesture = false
         }
     }

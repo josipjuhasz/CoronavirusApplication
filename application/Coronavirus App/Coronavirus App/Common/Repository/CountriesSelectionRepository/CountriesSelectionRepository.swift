@@ -10,5 +10,5 @@ import Combine
 
 protocol CountriesSelectionRepository {
     
-    func getCountriesList() -> AnyPublisher<[Country], ErrorType>
+    func getCountriesList() -> AnyPublisher<Result<[CountryDetails], ErrorType>, Never>
 }

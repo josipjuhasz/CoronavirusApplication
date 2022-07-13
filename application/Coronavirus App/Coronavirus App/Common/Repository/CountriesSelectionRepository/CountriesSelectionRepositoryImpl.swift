@@ -10,8 +10,8 @@ import Combine
 
 class CountriesSelectionRepositoryImpl: CountriesSelectionRepository {
     
-    func getCountriesList() -> AnyPublisher<[Country], ErrorType> {
+    func getCountriesList() -> AnyPublisher<Result<[CountryDetails], ErrorType>, Never> {
         let url = RestEndpoints.countries.endpoint()
-        return RestManager().fetchData(url: url)
+        return RestManager.fetchData(url: url)
     }
 }

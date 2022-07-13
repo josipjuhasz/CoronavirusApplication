@@ -13,7 +13,6 @@ struct MapStatisticsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: MapViewModel
     @Binding var useCase: UseCaseSelection
-    @State var isShowingCountrySelection = false
     
     init(viewModel: MapViewModel, useCase: Binding<UseCaseSelection>) {
         self.viewModel = viewModel
@@ -43,44 +42,44 @@ struct MapStatisticsView: View {
                     errorViewBuilder(error)
                         .navigationBarHidden(true)
                 } else {
-                    VStack {
-                        Spacer()
-                        
-                        MapView(viewModel: viewModel)
-                            .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.4)
+                    if let title = viewModel.domainItem?.title
+                    {
+                        VStack {
+                            Spacer()
+                            
+                            MapView(viewModel: viewModel)
+                                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.4)
+                                .padding()
+                            
+                            Spacer()
+                            Spacer()
+                            statistics(title: title)
+                            Spacer()
+                        }
+                        .padding()
+                        .addAppThemeBackground()
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarTitle("", displayMode: .inline)
+                        .navigationBarItems(leading:
+                                                Text(verbatim: useCase == .worldwide ? .statisticsWorldwideTitle : .statisticsCountryTitle)
+                            .commonFont(.semiBold, style: .title2)
                             .padding()
-                        
-                        Spacer()
-                        Spacer()
-                        statistics()
-                        Spacer()
+                        )
+                    } else {
+                        ErrorView(.general)
                     }
-                    .padding()
-                    .addAppThemeBackground()
-                    .navigationBarTitle(viewModel.useCase == .worldwide ? "Statistics Worldwide" : "Statistics by Country", displayMode: .inline)
                 }
             }
-            .background(
-                NavigationLink(isActive: $isShowingCountrySelection) {
-                    CountrySelectionView(useCase: $useCase)
-                        .navigationBarBackButtonHidden(true)
-                } label: {}
-            )
-        }
-        .onAppear {
-            viewModel.useCase = useCase
         }
     }
 }
 
 extension MapStatisticsView {
     @ViewBuilder
-    private func statistics() -> some View {
+    private func statistics(title: String) -> some View {
         VStack(alignment: .leading, spacing: 20) {
-            if let title = viewModel.domainItem?.title {
-                Text(title)
-                    .commonFont(.semiBold, style: .headline)
-            }
+            Text(title)
+                .commonFont(.semiBold, style: .headline)
             
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 5) {
@@ -100,7 +99,7 @@ extension MapStatisticsView {
                         .commonFont(.semiBold, style: .caption2)
                         .foregroundColor(Color(UIColor.systemGray))
                         .multilineTextAlignment(.leading)
-                        
+                    
                     
                     Text("\(viewModel.domainItem?.activeCases?.value ?? 0)")
                         .commonFont(.regular, style: .callout)
@@ -140,7 +139,7 @@ extension MapStatisticsView {
             }
         }
         .padding()
-        .background(Color.dashboard)
+        .background(Color.darkGrayBackground)
         .shadow(color: Color.black.opacity(0.1), radius: 15, x: 0, y: 0)
     }
     
@@ -148,11 +147,26 @@ extension MapStatisticsView {
     private func errorViewBuilder(_ error: ErrorType) -> some View {
         switch error {
         case .general:
-            ErrorView(errorType: .general)
+            ErrorView(.general) {
+                viewModel.errorActionCallback()
+            }
         case .noInternetConnection:
-            ErrorView(errorType: .noInternetConnection)
+            ErrorView(.noInternetConnection){
+                viewModel.errorActionCallback()
+            }
         case .empty:
-            EmptyStateView(isShowingCountrySelection: $isShowingCountrySelection)
+            EmptyStateView(isShowingCountrySelection: $viewModel.isShowingCountrySelection)
         }
+    }
+}
+
+struct MapStatisticsView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapStatisticsView(
+            viewModel: MapViewModel(
+                repository: StatisticsRepositoryImpl(),
+                useCase: .worldwide),
+            useCase: .constant(.worldwide)
+        )
     }
 }

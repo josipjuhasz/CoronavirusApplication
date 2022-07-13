@@ -10,7 +10,7 @@ import SwiftUI
 extension String {
     
     static let chooseCountryTitle = "Choose your country"
-    static let countryStatisticsTitle = "Statistics by Country"
+    static let statisticsCountryTitle = "Statistics by Country"
     static let latestNewsTitle = "Latest News"
     static let covidTrackerTitle = "Covid-19 Tracker"
     static let statisticsWorldwideTitle = "Statistics Worldwide"

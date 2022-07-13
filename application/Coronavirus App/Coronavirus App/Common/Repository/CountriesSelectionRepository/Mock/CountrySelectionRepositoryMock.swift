@@ -10,22 +10,21 @@ import Combine
 
 class CountrySelectionRepositoryMock: CountriesSelectionRepository {
     
-    func getCountriesList() -> AnyPublisher<[Country], ErrorType> {
+    func getCountriesList() -> AnyPublisher<Result<[CountryDetails], ErrorType>, Never> {
         do {
             guard let resourcePath = Bundle.main.url(forResource: "Covid19CountryList", withExtension: "json") else {
-                return Fail(error: ErrorType.empty).eraseToAnyPublisher()
+                return Just(Result.failure(ErrorType.general)).eraseToAnyPublisher()
             }
             let data = try Data(contentsOf: resourcePath)
-            let parsedData = try JSONDecoder().decode([Country].self, from: data)
+            let parsedData = try JSONDecoder().decode([CountryDetails].self, from: data)
             
-            return Just(parsedData)
-                .setFailureType(to: ErrorType.self)
+            return Just(Result.success(parsedData))
                 .eraseToAnyPublisher()
         }
         
         catch {
             print("Error \(error)")
-            return Fail(error: ErrorType.empty).eraseToAnyPublisher()
+            return Just(Result.failure(ErrorType.general)).eraseToAnyPublisher()
         }
     }
 }

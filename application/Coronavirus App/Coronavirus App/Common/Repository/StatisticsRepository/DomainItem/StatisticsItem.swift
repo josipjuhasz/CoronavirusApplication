@@ -20,13 +20,13 @@ struct StatisticsItem: Equatable {
     let value: Int
     let delta: Int
     
-    init?(value: Int){
+    init(value: Int){
         self.type = .active
         self.value = value
         self.delta = 0
     }
     
-    init?(type: StatisticsCaseType, value: Int, delta: Int) {
+    init(type: StatisticsCaseType, value: Int, delta: Int) {
         self.type = type
         self.value = value
         self.delta = delta

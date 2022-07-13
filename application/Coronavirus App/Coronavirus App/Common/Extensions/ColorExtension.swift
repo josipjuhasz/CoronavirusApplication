@@ -9,9 +9,8 @@
 import SwiftUI
 
 extension Color {
-    
-    static let background = Color("background")
-    static let dashboard = Color("dashboard")
+    static let appBackground = Color("appBackground")
+    static let darkGrayBackground = Color("darkGrayBackground")
     static let barTint = Color("barTint")
     static let homeViewCell = Color("homeViewCell")
     static let homeViewCellHeader = Color("homeViewCellHeader")

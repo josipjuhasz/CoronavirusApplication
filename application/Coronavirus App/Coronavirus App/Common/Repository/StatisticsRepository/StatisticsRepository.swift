@@ -10,6 +10,6 @@ import Combine
 
 protocol StatisticsRepository {
     
-    func getCountryData(for name: String) -> AnyPublisher<[CountryDayOneResponseItem], ErrorType>
-    func getWorldwideData() -> AnyPublisher<WorldwideResponseItem, ErrorType>
+    func getCountryData(for name: String) -> AnyPublisher<Result<[CountryDayOneResponseItem], ErrorType>, Never>
+    func getWorldwideData() -> AnyPublisher<Result<WorldwideResponseItem, ErrorType>, Never>
 }

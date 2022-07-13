@@ -10,10 +10,8 @@ import SwiftUI
 struct PageComingSoonView: View {
     
     var body: some View {
-        
         GeometryReader { geo in
             VStack() {
-                
                 LoaderView()
                     .frame(height: geo.size.height * 0.5)
                 
@@ -24,11 +22,5 @@ struct PageComingSoonView: View {
             }
             .addAppThemeBackground()
         }
-    }
-}
-
-struct PageComingSoonView_Previews: PreviewProvider {
-    static var previews: some View {
-        PageComingSoonView()
     }
 }

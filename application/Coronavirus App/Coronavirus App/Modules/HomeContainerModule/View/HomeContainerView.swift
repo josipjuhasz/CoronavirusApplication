@@ -8,7 +8,6 @@
 import SwiftUI
 
 enum TabIcon: String {
-    
     case home = "homeTabIcon"
     case latestNews = "latestNewsTabIcon"
     case statistics = "statisticsTabIcon"
@@ -49,7 +48,7 @@ struct HomeContainerView: View {
                     renderAsImage(.latestNews)
                 }
             
-            PageComingSoonView()
+            CovidCertificatesView(viewModel: CovidCertificatesViewModel(repository: CovidScannerRepositoryImpl()))
                 .tabItem {
                     renderAsImage(.pageComingSoon)
                 }
@@ -68,6 +67,5 @@ extension HomeContainerView {
 struct HomeContainerView_Previews: PreviewProvider {
     static var previews: some View {
         HomeContainerView()
-            .preferredColorScheme(.light)
     }
 }

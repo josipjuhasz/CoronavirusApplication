@@ -16,7 +16,7 @@ struct DataListItem: Identifiable {
     var deaths: String
     var active: String
     
-    init?(title: String, confirmed: String, recovered: String, deaths: String, active: String) {
+    init(title: String, confirmed: String, recovered: String, deaths: String, active: String) {
         self.title = title
         self.confirmed = confirmed
         self.recovered = recovered

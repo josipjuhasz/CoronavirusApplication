@@ -18,7 +18,6 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> some MKMapView {
-        
         return mapView
     }
     
@@ -41,9 +40,10 @@ struct MapView: UIViewRepresentable {
 
 extension MapView {
     func setWorldwideUseCase(uiView: UIViewType, context: Context) {
-        if let domain = viewModel.domainItem {
+        if let domain = viewModel.domainItem,
+           let country = domain.worldwideItems?.first?.name {
             uiView.removeAnnotations(uiView.annotations)
-            setRegion(uiView: uiView, country: domain.worldwideItems?.first?.name ?? "")
+            setRegion(uiView: uiView, country: country)
             
             if let countries = domain.worldwideItems {
                 for coordinate in countries {
@@ -57,8 +57,9 @@ extension MapView {
     }
     
     func setCountryUseCase(uiView: UIViewType, context: Context) {
-        if let domain = viewModel.domainItem {
-            setRegion(uiView: uiView, country: domain.title ?? "")
+        if let domain = viewModel.domainItem,
+           let country = domain.title {
+            setRegion(uiView: uiView, country: country)
             
             let annotation: MKPointAnnotation = MKPointAnnotation()
             uiView.removeAnnotations(uiView.annotations)

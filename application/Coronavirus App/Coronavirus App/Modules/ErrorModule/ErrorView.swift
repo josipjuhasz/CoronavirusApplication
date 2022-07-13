@@ -16,13 +16,17 @@ struct ErrorView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     let errorType: ErrorViewType
+    var buttonAction : (() -> ())?
+    
+    init(_ errorType: ErrorViewType, buttonAction: (() -> ())? = nil){
+        self.errorType = errorType
+        self.buttonAction = buttonAction
+    }
     
     var body: some View {
-        
         let width = UIScreen.main.bounds.width
         
         VStack(spacing: 30) {
-            
             Spacer()
             
             switch errorType {
@@ -46,8 +50,12 @@ struct ErrorView: View {
                 .commonFont(.regular, style: .title3)
                 .foregroundColor(Color(UIColor.systemGray))
             
-            Button(errorType == .noInternetConnection ? String.noInternetErrorButtonTitle : String.generalErrorButtonTitle) {}
-            .coronaVirusAppButtonStyle()
+            if let errorActionCallback = buttonAction {
+                Button(errorType == .noInternetConnection ? String.noInternetErrorButtonTitle : String.generalErrorButtonTitle) {
+                    errorActionCallback()
+                }
+                .coronaVirusAppButtonStyle()
+            }
             
             Spacer()
             Spacer()
@@ -58,6 +66,6 @@ struct ErrorView: View {
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(errorType: .noInternetConnection)
+        ErrorView(.general)
     }
 }

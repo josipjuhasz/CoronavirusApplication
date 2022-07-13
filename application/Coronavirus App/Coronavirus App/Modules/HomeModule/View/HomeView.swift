@@ -10,21 +10,18 @@ import SwiftUI
 struct HomeView: View {
     
     @Environment(\.colorScheme) private var colorScheme
-    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var viewModel: HomeViewModel
     @Binding var useCase: UseCaseSelection
-    @State var isShowingCountrySelection = false
     
     init(viewModel: HomeViewModel, useCase: Binding<UseCaseSelection>){
-        homeViewModel = viewModel
+        self._viewModel = ObservedObject(wrappedValue: viewModel)
         self._useCase = useCase
     }
     
     var body: some View {
-        
         NavigationView {
             GeometryReader { geo in
-                
-                if homeViewModel.loader {
+                if viewModel.loader {
                     VStack(){
                         LoaderView()
                             .frame(height: geo.size.height * 0.5)
@@ -34,74 +31,73 @@ struct HomeView: View {
                     }
                     .addAppThemeBackground()
                 }
-                else if let error = homeViewModel.error {
+                else if let error = viewModel.error {
                     errorViewBuilder(error)
                         .navigationBarHidden(true)
                 }
                 else {
-                    ScrollView {
-                        ZStack(alignment: .top){
-                            VStack(spacing: 0) {
-                                ZStack {
+                    if let data = viewModel.data {
+                        ScrollView {
+                            ZStack(alignment: .top){
+                                VStack(spacing: 0) {
+                                    ZStack {
+                                        Rectangle()
+                                            .fill(Color.appBackground)
+                                            .frame(width: geo.size.width, height: geo.size.height * 0.33)
+                                            .background(Color.appBackground)
+                                            .environment(\.colorScheme, .dark)
+                                        
+                                        virusImage(blur: 0)
+                                            .frame(width: (geo.size.width * 0.3), height: (geo.size.width * 0.3))
+                                            .offset(x: -(geo.size.width * 0.45), y: geo.size.height * 0.12)
+                                        
+                                        virusImage(blur: 1)
+                                            .frame(width: (geo.size.width * 0.2), height: (geo.size.width * 0.2))
+                                            .offset(x: geo.size.width * 0.46, y: -(geo.size.height * 0.05))
+                                        
+                                        virusImage(blur: 1.5)
+                                            .frame(width: (geo.size.width * 0.15), height: (geo.size.width * 0.15))
+                                            .offset(x: geo.size.width * 0.45, y: geo.size.height * 0.1)
+                                    }
+                                    
                                     Rectangle()
-                                        .fill(Color.background)
-                                        .frame(width: geo.size.width, height: geo.size.height * 0.33)
-                                        .background(Color.background)
-                                        .environment(\.colorScheme, .dark)
-                                    
-                                    virusImage(blur: 0)
-                                        .frame(width: (geo.size.width * 0.3), height: (geo.size.width * 0.3))
-                                        .offset(x: -(geo.size.width * 0.45), y: geo.size.height * 0.12)
-                                    
-                                    virusImage(blur: 1)
-                                        .frame(width: (geo.size.width * 0.2), height: (geo.size.width * 0.2))
-                                        .offset(x: geo.size.width * 0.46, y: -(geo.size.height * 0.05))
-                                    
-                                    virusImage(blur: 1.5)
-                                        .frame(width: (geo.size.width * 0.15), height: (geo.size.width * 0.15))
-                                        .offset(x: geo.size.width * 0.45, y: geo.size.height * 0.1)
+                                        .fill(Color.appBackground)
                                 }
                                 
-                                Rectangle()
-                                    .fill(Color.background)
-                            }
-                            
-                            VStack {
-                                if let data = homeViewModel.data {
+                                VStack {
                                     header(data: data)
                                         .padding(.top)
                                     dashboards(data: data)
                                     list(data: data)
                                 }
+                                .padding()
                             }
-                            .padding()
                         }
+                        .ignoresSafeArea()
+                        .addAppThemeBackground()
+                        .navigationBarHidden(true)
+                    } else {
+                        ErrorView(.general)
                     }
-                    .ignoresSafeArea()
-                    .addAppThemeBackground()
-                    .navigationBarHidden(true)
                 }
             }
             .background(
-                NavigationLink(isActive: $isShowingCountrySelection) {
-                    CountrySelectionView(useCase: $useCase) 
+                NavigationLink(isActive: $viewModel.isShowingCountrySelection) {
+                    CountrySelectionView(viewModel: CountrySelectionViewModel(repository: CountriesSelectionRepositoryImpl()), useCase: $useCase)
                         .navigationBarBackButtonHidden(true)
                 } label: {}
             )
         }
         .onAppear {
-            UIScrollView.appearance().bounces = false
-            homeViewModel.useCase = useCase
+            viewModel.handleOnAppearEvent(&UIScrollView.appearance().bounces)
         }
     }
 }
 
 
 extension HomeView {
-    
     @ViewBuilder
     private func virusImage(blur: CGFloat) -> some View {
-        
         Image("virus")
             .resizable()
             .scaledToFit()
@@ -111,7 +107,6 @@ extension HomeView {
     
     @ViewBuilder
     private func header(data: HomeDomainItem) -> some View {
-        
         HStack {
             VStack(alignment: .leading, spacing: 10) {
                 
@@ -120,7 +115,7 @@ extension HomeView {
                     .foregroundColor(.white)
                 
                 Button {
-                    isShowingCountrySelection.toggle()
+                    viewModel.handleHeaderButtonAction()
                 } label: {
                     HStack() {
                         if let title = data.title {
@@ -149,7 +144,6 @@ extension HomeView {
     
     @ViewBuilder
     private func dashboardElement(_ item: StatisticsItem, color: Color) -> some View {
-        
         VStack(alignment: .leading) {
             Text(item.type.rawValue)
                 .commonFont(.bold, style: .caption2)
@@ -178,13 +172,12 @@ extension HomeView {
         }
         .padding([.top, .bottom])
         .frame(maxWidth: .infinity)
-        .background(Color.dashboard)
+        .background(Color.darkGrayBackground)
         .shadow(color: Color.black.opacity(0.15), radius: 35, x: 5.0, y: 0.0)
     }
     
     @ViewBuilder
     private func dashboards(data: HomeDomainItem) -> some View {
-        
         if let confirmed = data.confirmedCases,
            let recovered = data.recoveredCases,
            let active = data.activeCases,
@@ -207,18 +200,17 @@ extension HomeView {
     
     @ViewBuilder
     private func list(data: HomeDomainItem) -> some View {
-        
         let size = UIScreen.main.bounds.height
         
         LazyVStack (spacing: 25){
             HomeListItemView(
-                title: homeViewModel.useCase == .worldwide ? "State" : "Date",
+                title: viewModel.useCase == .worldwide ? "State" : "Date",
                 confirmed: "C",
                 active: "A",
                 deaths: "D",
                 recovered: "R"
             )
-                .frame(height: size / 25)
+            .frame(height: size / 25)
             
             if let list = data.listStats {
                 ForEach(list) { value in
@@ -227,7 +219,7 @@ extension HomeView {
                                      active: value.active,
                                      deaths: value.deaths,
                                      recovered: value.recovered)
-                        .frame(height: size / 25)
+                    .frame(height: size / 25)
                 }
             }
             
@@ -239,15 +231,29 @@ extension HomeView {
     
     @ViewBuilder
     private func errorViewBuilder(_ error: ErrorType) -> some View {
-        
         switch error {
         case .general:
-            ErrorView(errorType: .general)
+            ErrorView(.general) {
+                viewModel.errorActionCallback()
+            }
         case .noInternetConnection:
-            ErrorView(errorType: .noInternetConnection)
+            ErrorView(.noInternetConnection) {
+                viewModel.errorActionCallback()
+            }
         case .empty:
-            EmptyStateView(isShowingCountrySelection: $isShowingCountrySelection)
+            EmptyStateView(isShowingCountrySelection: $viewModel.isShowingCountrySelection)
         }
     }
 }
 
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(
+            viewModel: HomeViewModel(
+                repository: StatisticsRepositoryImpl(),
+                useCase: .worldwide
+            ),
+            useCase: .constant(.worldwide)
+        )
+    }
+}

@@ -7,82 +7,48 @@
 
 import SwiftUI
 
-class MapDomainItem: StatisticsDomain {
+class MapDomainItem: StatisticsDomainItem {
     
-    var title: String?
-    var confirmedCases: StatisticsItem?
-    var activeCases: StatisticsItem?
-    var recoveredCases: StatisticsItem?
-    var deathCases: StatisticsItem?
     var countryCoordinates: [CountryCoordinates]?
     var worldwideItems: [CountryDayOneResponseItem]?
     
-    init(title: String, confirmed: Int, active: Int, recovered: Int, death: Int){
-        self.title = title
-        self.confirmedCases = StatisticsItem(value: confirmed)
-        self.activeCases = StatisticsItem(value: active)
-        self.recoveredCases = StatisticsItem(value: recovered)
-        self.deathCases = StatisticsItem(value: death)
+    init(title: String, confirmed: StatisticsItem, active: StatisticsItem, recovered: StatisticsItem, death: StatisticsItem){
+        super.init(
+            title: title,
+            confirmedCases: confirmed,
+            activeCases: active,
+            recoveredCases: recovered,
+            deathCases: death
+        )
     }
     
     init(item: [CountryDayOneResponseItem]) throws {
-        guard let first = item.first else { return }
+        super.init()
+        guard let first = item.first else { throw ErrorType.general }
         title = first.name
-        try createCountryStats(item: first)
+        try setCountryStats(item: first)
         countryCoordinates = try getCountryCoordinates(country: first)
     }
     
-    init(responseItem: WorldwideResponseItem, items: (CountryDayOneResponseItem, CountryDayOneResponseItem, CountryDayOneResponseItem)) throws {
+    init(responseItem: WorldwideResponseItem, items: [CountryDayOneResponseItem]?) throws {
+        super.init()
         title = "Worldwide"
-        try createWorldwideStats(item: responseItem)
-        worldwideItems = try createWorlwideItem(items: items)
+        try setWorldwideStats(item: responseItem)
+        worldwideItems = try getWorldwideItems(items: items)
     }
     
-    private func createCountryStats(item: CountryDayOneResponseItem) throws {
-        guard let confirmed = StatisticsItem(value: item.confirmed) else {
-            throw ErrorType.empty
-        }
-        
-        guard let active = StatisticsItem(value: item.active) else {
-            throw ErrorType.empty
-        }
-        
-        guard let death = StatisticsItem(value: item.deaths) else {
-            throw ErrorType.empty
-        }
-        
-        guard let recovered = StatisticsItem(value: item.recovered) else {
-            throw ErrorType.empty
-        }
-        
-        confirmedCases = confirmed
-        activeCases = active
-        recoveredCases = recovered
-        deathCases = death
+    private func setCountryStats(item: CountryDayOneResponseItem) throws {
+        confirmedCases = StatisticsItem(value: item.confirmed)
+        activeCases = StatisticsItem(value: item.active)
+        recoveredCases = StatisticsItem(value: item.recovered)
+        deathCases = StatisticsItem(value: item.deaths)
     }
     
-    private func createWorldwideStats(item: WorldwideResponseItem) throws {
-        
-        guard let confirmed = StatisticsItem(value: item.global.totalConfirmed) else {
-            throw ErrorType.empty
-        }
-        
-        guard let active = StatisticsItem(value: item.global.totalConfirmed - item.global.totalRecovered) else {
-            throw ErrorType.empty
-        }
-        
-        guard let death = StatisticsItem(value: item.global.totalDeaths) else {
-            throw ErrorType.empty
-        }
-        
-        guard let recovered = StatisticsItem(value: item.global.totalRecovered) else {
-            throw ErrorType.empty
-        }
-        
-        confirmedCases = confirmed
-        activeCases = active
-        recoveredCases = recovered
-        deathCases = death
+    private func setWorldwideStats(item: WorldwideResponseItem) throws {
+        confirmedCases = StatisticsItem(value: item.global.totalConfirmed)
+        activeCases = StatisticsItem(value: item.global.totalConfirmed - item.global.totalRecovered)
+        recoveredCases = StatisticsItem(value: item.global.totalRecovered)
+        deathCases = StatisticsItem(value: item.global.totalDeaths)
     }
     
     private func getCountryCoordinates(country: CountryDayOneResponseItem) throws -> [CountryCoordinates]{
@@ -92,14 +58,12 @@ class MapDomainItem: StatisticsDomain {
         return newArray
     }
     
-    func createWorlwideItem(items: (CountryDayOneResponseItem, CountryDayOneResponseItem, CountryDayOneResponseItem)) throws -> [CountryDayOneResponseItem]{
+    private func getWorldwideItems(items: [CountryDayOneResponseItem]?) throws -> [CountryDayOneResponseItem] {
+        guard let newItems = items else {
+            throw ErrorType.general
+        }
         
-        self.worldwideItems = []
-        
-        var newArray = [CountryDayOneResponseItem]()
-        newArray.append(items.0)
-        newArray.append(items.1)
-        newArray.append(items.2)
-        return newArray
+        worldwideItems = []
+        return newItems
     }
 }

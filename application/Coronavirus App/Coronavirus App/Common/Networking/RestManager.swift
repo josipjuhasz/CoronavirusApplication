@@ -10,43 +10,29 @@ import Combine
 
 class RestManager {
     
-    func fetchData<T: Decodable>(url: URL) -> AnyPublisher<T, ErrorType> {
+    static func fetchData<T: Decodable>(url: URL) -> AnyPublisher<Result<T, ErrorType>, Never> {
         URLSession
             .shared
             .dataTaskPublisher(for: url)
-            .tryMap { data, _ in
-                let value = try JSONDecoder().decode(T.self, from: data)
-                if let array = value as? Array<Any>, array.isEmpty {
-                    throw ErrorType.empty
-                }
-                return value
-            }
-            .mapError { error -> ErrorType in
-                switch error {
-                    
-                case let errorType as ErrorType:
-                    switch errorType {
-                    case .empty:
-                        return .empty
-                    case .general:
-                        return .general
-                    case .noInternetConnection:
-                        return .noInternetConnection
-                    }
-                    
-                case let urlError as URLError:
-                    switch urlError.code {
-                    case .notConnectedToInternet, .networkConnectionLost, .timedOut:
-                        return .noInternetConnection
-                    case .cannotDecodeRawData, .cannotDecodeContentData:
-                        return .empty
-                    default:
-                        return .general
-                    }
+            .mapError { urlError -> ErrorType in
+                switch urlError.code {
+                case .notConnectedToInternet, .networkConnectionLost, .timedOut:
+                    return ErrorType.noInternetConnection
+                case .cannotDecodeRawData, .cannotDecodeContentData:
+                    return ErrorType.empty
                 default:
-                    return .general
+                    return ErrorType.general
                 }
             }
+            .map { $0.data }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .map { result -> Result<T, ErrorType> in
+                if let array = result as? Array<Any>, array.isEmpty {
+                    return Result.failure(ErrorType.empty)
+                }
+                return Result.success(result)
+            }
+            .catch { Just<Result<T, ErrorType>>(.failure($0 as? ErrorType ?? .general)) }
             .eraseToAnyPublisher()
     }
 }
