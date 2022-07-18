@@ -21,9 +21,17 @@
 		7D1045A32832CEB4005F28F5 /* LatestNewsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D1045A22832CEB4005F28F5 /* LatestNewsData.json */; };
 		7D30F3E527AC56BB0012E93F /* CountriesSelectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30F3E427AC56BB0012E93F /* CountriesSelectionRepository.swift */; };
 		7D30F3E827AC58FD0012E93F /* CountriesSelectionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30F3E727AC58FD0012E93F /* CountriesSelectionRepositoryImpl.swift */; };
+		7D3B44EC2857923A005D4373 /* EUDCC in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3B44EB2857923A005D4373 /* EUDCC */; };
+		7D3B44EE2857923A005D4373 /* EUDCCDecoder in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3B44ED2857923A005D4373 /* EUDCCDecoder */; };
+		7D3B44F02857923A005D4373 /* EUDCCValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3B44EF2857923A005D4373 /* EUDCCValidator */; };
+		7D3B44F22857923A005D4373 /* EUDCCVerifier in Frameworks */ = {isa = PBXBuildFile; productRef = 7D3B44F12857923A005D4373 /* EUDCCVerifier */; };
+		7D3B44F528579457005D4373 /* CovidScannerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B44F428579457005D4373 /* CovidScannerRepository.swift */; };
+		7D3B44F728579559005D4373 /* CovidScannerRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B44F628579559005D4373 /* CovidScannerRepositoryImpl.swift */; };
+		7D3B44F928579666005D4373 /* CovidCertificateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B44F828579666005D4373 /* CovidCertificateDecoder.swift */; };
+		7D3B450428595205005D4373 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B450328595205005D4373 /* DateUtils.swift */; };
+		7D3B450628595278005D4373 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3B450528595278005D4373 /* ErrorExtension.swift */; };
 		7D40BE1A27904BA0006884D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D40BE1927904BA0006884D3 /* LaunchScreen.storyboard */; };
 		7D66D48C277109DB00BCF8CF /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D66D48B277109DB00BCF8CF /* Montserrat.ttf */; };
-		7D6A80EC2818227D00BB99AF /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6A80EB2818227D00BB99AF /* ErrorExtension.swift */; };
 		7D6BDBDA2774C64200426006 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7D6BDBD92774C64200426006 /* Lottie */; };
 		7D6D5C15280B044300A29921 /* StatisticsRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6D5C14280B044200A29921 /* StatisticsRepositoryMock.swift */; };
 		7D6DF7C02826E97000592ACE /* RelativeDateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DF7BF2826E97000592ACE /* RelativeDateFormatterExtension.swift */; };
@@ -34,13 +42,19 @@
 		7D75807527D75FA8004BBC08 /* CommonFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D75807427D75FA8004BBC08 /* CommonFont.swift */; };
 		7D780B4D27BFB90900BDC41A /* CountrySelectionRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D780B4C27BFB90900BDC41A /* CountrySelectionRepositoryMock.swift */; };
 		7D780B5327BFBBC000BDC41A /* Covid19CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D780B5227BFBBC000BDC41A /* Covid19CountryList.json */; };
-		7D7D7D0A2804642E00143241 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D7D092804642E00143241 /* DateUtils.swift */; };
 		7D7D7D0E2804723100143241 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D7D0D2804723100143241 /* DateFormatterExtension.swift */; };
 		7D7F613127F1EB7E0002FC51 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F613027F1EB7E0002FC51 /* HomeView.swift */; };
 		7D99A9F12767D01C00356849 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99A9F02767D01C00356849 /* StringExtension.swift */; };
 		7D99A9F42768F3E000356849 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99A9F32768F3E000356849 /* ColorExtension.swift */; };
 		7D99A9F72768F9A800356849 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D99A9F62768F9A800356849 /* ViewExtension.swift */; };
-		7D9E66C12823111900272B44 /* StatisticsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E66C02823111900272B44 /* StatisticsDomain.swift */; };
+		7D9B178328647D360069B77C /* CertificateDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B178228647D360069B77C /* CertificateDetailsView.swift */; };
+		7D9B178E2868BC2F0069B77C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B178D2868BC2F0069B77C /* CoreDataManager.swift */; };
+		7D9B17902868BD990069B77C /* CovidCertificateDomainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B178F2868BD990069B77C /* CovidCertificateDomainItem.swift */; };
+		7D9B17932868C56B0069B77C /* CovidCertificatesContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B17912868C56B0069B77C /* CovidCertificatesContainer.xcdatamodeld */; };
+		7D9B17962869D58C0069B77C /* CovidCertificatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B17952869D58C0069B77C /* CovidCertificatesViewModel.swift */; };
+		7D9B1798286AE90E0069B77C /* CovidCertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B1797286AE90E0069B77C /* CovidCertificatesView.swift */; };
+		7D9B179A286C46460069B77C /* CovidCertificatesListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B1799286C46460069B77C /* CovidCertificatesListItem.swift */; };
+		7D9E66C12823111900272B44 /* StatisticsDomainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E66C02823111900272B44 /* StatisticsDomainItem.swift */; };
 		7D9E66D628266B8000272B44 /* MapDomainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E66D528266B8000272B44 /* MapDomainItem.swift */; };
 		7D9E66D828266BAB00272B44 /* CountryCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E66D728266BAB00272B44 /* CountryCoordinates.swift */; };
 		7D9E66DC28266BFA00272B44 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9E66DB28266BFA00272B44 /* MapViewModel.swift */; };
@@ -58,10 +72,12 @@
 		7DA9A9AD28057FE7006C4693 /* HomeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9AC28057FE7006C4693 /* HomeContainerView.swift */; };
 		7DA9A9B328058072006C4693 /* PageComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9B228058072006C4693 /* PageComingSoonView.swift */; };
 		7DA9A9B62805807F006C4693 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9B52805807F006C4693 /* LoaderView.swift */; };
-		7DA9A9B9280582A1006C4693 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9B8280582A1006C4693 /* Country.swift */; };
+		7DA9A9B9280582A1006C4693 /* CountryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9B8280582A1006C4693 /* CountryDetails.swift */; };
 		7DA9A9BC280582C9006C4693 /* CountryListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9BB280582C9006C4693 /* CountryListItemView.swift */; };
 		7DA9A9BE280582D9006C4693 /* CountrySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9BD280582D9006C4693 /* CountrySelectionView.swift */; };
 		7DA9A9C1280582EB006C4693 /* CountrySelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9A9C0280582EB006C4693 /* CountrySelectionViewModel.swift */; };
+		7DACCF9D28410C1300BDE125 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCF9C28410C1300BDE125 /* CameraPreview.swift */; };
+		7DACCF9F28410C2F00BDE125 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCF9E28410C2F00BDE125 /* ScanView.swift */; };
 		7DB4436F27F463AF007AD6CD /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4436E27F463AF007AD6CD /* EmptyStateView.swift */; };
 		7DB4437527F4A16D007AD6CD /* CoronaVirusAppButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4437427F4A16D007AD6CD /* CoronaVirusAppButtonStyle.swift */; };
 		7DB4437827F4A219007AD6CD /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4437727F4A219007AD6CD /* ErrorView.swift */; };
@@ -93,10 +109,14 @@
 		7D1045A22832CEB4005F28F5 /* LatestNewsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LatestNewsData.json; sourceTree = "<group>"; };
 		7D30F3E427AC56BB0012E93F /* CountriesSelectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesSelectionRepository.swift; sourceTree = "<group>"; };
 		7D30F3E727AC58FD0012E93F /* CountriesSelectionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesSelectionRepositoryImpl.swift; sourceTree = "<group>"; };
+		7D3B44F428579457005D4373 /* CovidScannerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidScannerRepository.swift; sourceTree = "<group>"; };
+		7D3B44F628579559005D4373 /* CovidScannerRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidScannerRepositoryImpl.swift; sourceTree = "<group>"; };
+		7D3B44F828579666005D4373 /* CovidCertificateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidCertificateDecoder.swift; sourceTree = "<group>"; };
+		7D3B450328595205005D4373 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		7D3B450528595278005D4373 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7D40BE1927904BA0006884D3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D66D48B277109DB00BCF8CF /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
 		7D66D48D27710A0B00BCF8CF /* Coronavirus-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Coronavirus-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		7D6A80EB2818227D00BB99AF /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		7D6D5C14280B044200A29921 /* StatisticsRepositoryMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsRepositoryMock.swift; sourceTree = "<group>"; };
 		7D6DF7BF2826E97000592ACE /* RelativeDateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatterExtension.swift; sourceTree = "<group>"; };
 		7D6F5BE127679F53008148D7 /* Coronavirus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coronavirus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,13 +127,19 @@
 		7D75807427D75FA8004BBC08 /* CommonFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFont.swift; sourceTree = "<group>"; };
 		7D780B4C27BFB90900BDC41A /* CountrySelectionRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionRepositoryMock.swift; sourceTree = "<group>"; };
 		7D780B5227BFBBC000BDC41A /* Covid19CountryList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Covid19CountryList.json; sourceTree = "<group>"; };
-		7D7D7D092804642E00143241 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		7D7D7D0D2804723100143241 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		7D7F613027F1EB7E0002FC51 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7D99A9F02767D01C00356849 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7D99A9F32768F3E000356849 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		7D99A9F62768F9A800356849 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		7D9E66C02823111900272B44 /* StatisticsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDomain.swift; sourceTree = "<group>"; };
+		7D9B178228647D360069B77C /* CertificateDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDetailsView.swift; sourceTree = "<group>"; };
+		7D9B178D2868BC2F0069B77C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		7D9B178F2868BD990069B77C /* CovidCertificateDomainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidCertificateDomainItem.swift; sourceTree = "<group>"; };
+		7D9B17922868C56B0069B77C /* CovidCertificatesContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CovidCertificatesContainer.xcdatamodel; sourceTree = "<group>"; };
+		7D9B17952869D58C0069B77C /* CovidCertificatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidCertificatesViewModel.swift; sourceTree = "<group>"; };
+		7D9B1797286AE90E0069B77C /* CovidCertificatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidCertificatesView.swift; sourceTree = "<group>"; };
+		7D9B1799286C46460069B77C /* CovidCertificatesListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidCertificatesListItem.swift; sourceTree = "<group>"; };
+		7D9E66C02823111900272B44 /* StatisticsDomainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDomainItem.swift; sourceTree = "<group>"; };
 		7D9E66D528266B8000272B44 /* MapDomainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDomainItem.swift; sourceTree = "<group>"; };
 		7D9E66D728266BAB00272B44 /* CountryCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCoordinates.swift; sourceTree = "<group>"; };
 		7D9E66DB28266BFA00272B44 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -131,10 +157,12 @@
 		7DA9A9AC28057FE7006C4693 /* HomeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerView.swift; sourceTree = "<group>"; };
 		7DA9A9B228058072006C4693 /* PageComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageComingSoonView.swift; sourceTree = "<group>"; };
 		7DA9A9B52805807F006C4693 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
-		7DA9A9B8280582A1006C4693 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		7DA9A9B8280582A1006C4693 /* CountryDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetails.swift; sourceTree = "<group>"; };
 		7DA9A9BB280582C9006C4693 /* CountryListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListItemView.swift; sourceTree = "<group>"; };
 		7DA9A9BD280582D9006C4693 /* CountrySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionView.swift; sourceTree = "<group>"; };
 		7DA9A9C0280582EB006C4693 /* CountrySelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectionViewModel.swift; sourceTree = "<group>"; };
+		7DACCF9C28410C1300BDE125 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		7DACCF9E28410C2F00BDE125 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		7DB4436E27F463AF007AD6CD /* EmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		7DB4437427F4A16D007AD6CD /* CoronaVirusAppButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoronaVirusAppButtonStyle.swift; sourceTree = "<group>"; };
 		7DB4437727F4A219007AD6CD /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -157,8 +185,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D3B44EC2857923A005D4373 /* EUDCC in Frameworks */,
+				7D3B44EE2857923A005D4373 /* EUDCCDecoder in Frameworks */,
 				7D104578282EB9C0005F28F5 /* Kingfisher in Frameworks */,
+				7D3B44F02857923A005D4373 /* EUDCCValidator in Frameworks */,
 				7D6BDBDA2774C64200426006 /* Lottie in Frameworks */,
+				7D3B44F22857923A005D4373 /* EUDCCVerifier in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,11 +281,48 @@
 		7D30F3E627AC58E50012E93F /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				7D3B44F328579447005D4373 /* CovidScannerRepository */,
 				7D10457B282EBA2E005F28F5 /* LatestNewsRepository */,
 				7DC4F35A27E8D95300EE7521 /* StatisticsRepository */,
 				7D780B4B27BFA9B300BDC41A /* CountriesSelectionRepository */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		7D3B44E928576C10005D4373 /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				7DACCF9E28410C2F00BDE125 /* ScanView.swift */,
+				7DACCF9C28410C1300BDE125 /* CameraPreview.swift */,
+				7D9B1799286C46460069B77C /* CovidCertificatesListItem.swift */,
+				7D9B178228647D360069B77C /* CertificateDetailsView.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		7D3B44F328579447005D4373 /* CovidScannerRepository */ = {
+			isa = PBXGroup;
+			children = (
+				7D3B44F428579457005D4373 /* CovidScannerRepository.swift */,
+				7D3B44F628579559005D4373 /* CovidScannerRepositoryImpl.swift */,
+			);
+			path = CovidScannerRepository;
+			sourceTree = "<group>";
+		};
+		7D3B44FA28579E54005D4373 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B178F2868BD990069B77C /* CovidCertificateDomainItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D3B4502285951FE005D4373 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D3B450328595205005D4373 /* DateUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		7D66D48A2770DE2900BCF8CF /* Extensions */ = {
@@ -264,8 +333,8 @@
 				7D99A9F62768F9A800356849 /* ViewExtension.swift */,
 				7D9E7B5D27EBBA3D003E95DF /* IntExtension.swift */,
 				7D7D7D0D2804723100143241 /* DateFormatterExtension.swift */,
-				7D6A80EB2818227D00BB99AF /* ErrorExtension.swift */,
 				7D6DF7BF2826E97000592ACE /* RelativeDateFormatterExtension.swift */,
+				7D3B450528595278005D4373 /* ErrorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +364,7 @@
 		7D6BDBDB277A153800426006 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				7DB4436D27F463AF007AD6CD /* EmptyStateModule */,
 				7D66D48F2772544A00BCF8CF /* Assets */,
 				7D40BE1927904BA0006884D3 /* LaunchScreen.storyboard */,
 			);
@@ -326,6 +396,7 @@
 				7D6BDBDB277A153800426006 /* Support */,
 				7D6F5BE427679F53008148D7 /* Coronavirus_AppApp.swift */,
 				7D6F5BEA27679F55008148D7 /* Preview Content */,
+				7D9B17912868C56B0069B77C /* CovidCertificatesContainer.xcdatamodeld */,
 			);
 			path = "Coronavirus App";
 			sourceTree = "<group>";
@@ -341,7 +412,7 @@
 		7D6F5BF22767A6E7008148D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				7D7D7D082804642100143241 /* DateService */,
+				7D3B4502285951FE005D4373 /* Utils */,
 				7D75807127D75F55004BBC08 /* ViewModifiers */,
 				7D30F3E627AC58E50012E93F /* Repository */,
 				7DF9D66427AA87D0009C01FD /* ErrorManagement  */,
@@ -396,12 +467,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		7D7D7D082804642100143241 /* DateService */ = {
+		7D9B17942869D57B0069B77C /* CovidCertificatesModule */ = {
 			isa = PBXGroup;
 			children = (
-				7D7D7D092804642E00143241 /* DateUtils.swift */,
+				7DB50BA828749ECC00DBDF4C /* Utils */,
+				7D3B44FA28579E54005D4373 /* Model */,
+				7D3B44E928576C10005D4373 /* SupportingViews */,
+				7DB50BA2286DE62900DBDF4C /* Manager */,
+				7DB50BA1286DE61900DBDF4C /* ViewModel */,
+				7DB50BA0286DE61000DBDF4C /* View */,
 			);
-			path = DateService;
+			path = CovidCertificatesModule;
 			sourceTree = "<group>";
 		};
 		7D9E66BF282310F000272B44 /* HomeDomainItem */ = {
@@ -454,7 +530,7 @@
 			children = (
 				7D9E66D428266B6E00272B44 /* MapDomainItem */,
 				7D9E66BF282310F000272B44 /* HomeDomainItem */,
-				7D9E66C02823111900272B44 /* StatisticsDomain.swift */,
+				7D9E66C02823111900272B44 /* StatisticsDomainItem.swift */,
 				7D9E7B5627EA41B3003E95DF /* StatisticsItem.swift */,
 			);
 			path = DomainItem;
@@ -532,7 +608,7 @@
 			children = (
 				7DA9A9BF280582DE006C4693 /* ViewModel */,
 				7DA9A9BA280582B2006C4693 /* View */,
-				7DA9A9B8280582A1006C4693 /* Country.swift */,
+				7DA9A9B8280582A1006C4693 /* CountryDetails.swift */,
 			);
 			path = CountrySelectionModule;
 			sourceTree = "<group>";
@@ -570,9 +646,42 @@
 			path = ErrorModule;
 			sourceTree = "<group>";
 		};
+		7DB50BA0286DE61000DBDF4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B1797286AE90E0069B77C /* CovidCertificatesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7DB50BA1286DE61900DBDF4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B17952869D58C0069B77C /* CovidCertificatesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7DB50BA2286DE62900DBDF4C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B178D2868BC2F0069B77C /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		7DB50BA828749ECC00DBDF4C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D3B44F828579666005D4373 /* CovidCertificateDecoder.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		7DB751ED2785F20B00DFB14D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7D9B17942869D57B0069B77C /* CovidCertificatesModule */,
 				7D10456D282EB8E5005F28F5 /* LatestNewsModule */,
 				7D9E66D928266BEA00272B44 /* MapModule */,
 				7DA9A9B728058293006C4693 /* CountrySelectionModule */,
@@ -580,7 +689,6 @@
 				7DA9A9B12805804D006C4693 /* PageComingSoonModule */,
 				7DA9A9AA28057FD2006C4693 /* HomeContainerModule */,
 				7DB4437627F4A20D007AD6CD /* ErrorModule */,
-				7DB4436D27F463AF007AD6CD /* EmptyStateModule */,
 				7DC4F35927E8D94400EE7521 /* HomeModule */,
 			);
 			path = Modules;
@@ -660,6 +768,10 @@
 			packageProductDependencies = (
 				7D6BDBD92774C64200426006 /* Lottie */,
 				7D104577282EB9C0005F28F5 /* Kingfisher */,
+				7D3B44EB2857923A005D4373 /* EUDCC */,
+				7D3B44ED2857923A005D4373 /* EUDCCDecoder */,
+				7D3B44EF2857923A005D4373 /* EUDCCValidator */,
+				7D3B44F12857923A005D4373 /* EUDCCVerifier */,
 			);
 			productName = "Coronavirus App";
 			productReference = 7D6F5BE127679F53008148D7 /* Coronavirus App.app */;
@@ -692,6 +804,7 @@
 			packageReferences = (
 				7D6BDBD82774C64200426006 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				7D104576282EB9C0005F28F5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */,
 			);
 			productRefGroup = 7D6F5BE227679F53008148D7 /* Products */;
 			projectDirPath = "";
@@ -739,23 +852,29 @@
 				7DC4F35E27E8DABB00EE7521 /* CountryDayOneResponseItem.swift in Sources */,
 				7D10457F282EBA55005F28F5 /* LatestNewsRepository.swift in Sources */,
 				7DA9A9B328058072006C4693 /* PageComingSoonView.swift in Sources */,
+				7D3B450628595278005D4373 /* ErrorExtension.swift in Sources */,
 				7D9E66E528266C6700272B44 /* MapStatisticsView.swift in Sources */,
 				7DA9A9B62805807F006C4693 /* LoaderView.swift in Sources */,
+				7D3B44F528579457005D4373 /* CovidScannerRepository.swift in Sources */,
 				7D7D7D0E2804723100143241 /* DateFormatterExtension.swift in Sources */,
 				7D10457D282EBA40005F28F5 /* LatestNewsRepositoryImpl.swift in Sources */,
+				7D9B17902868BD990069B77C /* CovidCertificateDomainItem.swift in Sources */,
 				7D104586282EC361005F28F5 /* RefreshHandler.swift in Sources */,
 				7D6D5C15280B044300A29921 /* StatisticsRepositoryMock.swift in Sources */,
 				7D10457A282EB9DF005F28F5 /* LatestNewsViewModel.swift in Sources */,
+				7D9B178328647D360069B77C /* CertificateDetailsView.swift in Sources */,
 				7DA9A9BE280582D9006C4693 /* CountrySelectionView.swift in Sources */,
 				7D9E66DC28266BFA00272B44 /* MapViewModel.swift in Sources */,
-				7D9E66C12823111900272B44 /* StatisticsDomain.swift in Sources */,
+				7DACCF9D28410C1300BDE125 /* CameraPreview.swift in Sources */,
+				7D9E66C12823111900272B44 /* StatisticsDomainItem.swift in Sources */,
 				7D9E7B9D27F09E6D003E95DF /* HomeListItemView.swift in Sources */,
+				7D9B179A286C46460069B77C /* CovidCertificatesListItem.swift in Sources */,
 				7D9E7B5727EA41B3003E95DF /* StatisticsItem.swift in Sources */,
 				7DC4F35C27E8DA3300EE7521 /* StatisticsRepository.swift in Sources */,
-				7D7D7D0A2804642E00143241 /* DateUtils.swift in Sources */,
 				7D99A9F12767D01C00356849 /* StringExtension.swift in Sources */,
 				7D104573282EB97D005F28F5 /* LatestNewsView.swift in Sources */,
 				7D9E66D828266BAB00272B44 /* CountryCoordinates.swift in Sources */,
+				7D3B44F728579559005D4373 /* CovidScannerRepositoryImpl.swift in Sources */,
 				7D6DF7C02826E97000592ACE /* RelativeDateFormatterExtension.swift in Sources */,
 				7DA9A9BC280582C9006C4693 /* CountryListItemView.swift in Sources */,
 				7D9E7B5927EB6C80003E95DF /* DataListItem.swift in Sources */,
@@ -764,24 +883,30 @@
 				7DC4F36827E8DD4500EE7521 /* StatisticsRepositoryImpl.swift in Sources */,
 				7DF9D66627AA8877009C01FD /* ErrorType .swift in Sources */,
 				7D30F3E827AC58FD0012E93F /* CountriesSelectionRepositoryImpl.swift in Sources */,
+				7D9B17962869D58C0069B77C /* CovidCertificatesViewModel.swift in Sources */,
+				7D9B1798286AE90E0069B77C /* CovidCertificatesView.swift in Sources */,
 				7DB4437527F4A16D007AD6CD /* CoronaVirusAppButtonStyle.swift in Sources */,
 				7D6F5BE527679F53008148D7 /* Coronavirus_AppApp.swift in Sources */,
+				7D3B450428595205005D4373 /* DateUtils.swift in Sources */,
 				7D1045A12832CDAD005F28F5 /* LatestNewsRepositoryMock.swift in Sources */,
 				7D9E66DF28266C2B00272B44 /* MapView.swift in Sources */,
 				7D9E66D628266B8000272B44 /* MapDomainItem.swift in Sources */,
 				7D30F3E527AC56BB0012E93F /* CountriesSelectionRepository.swift in Sources */,
-				7D6A80EC2818227D00BB99AF /* ErrorExtension.swift in Sources */,
 				7D9E7B5E27EBBA3D003E95DF /* IntExtension.swift in Sources */,
 				7DB4437827F4A219007AD6CD /* ErrorView.swift in Sources */,
-				7DA9A9B9280582A1006C4693 /* Country.swift in Sources */,
+				7DACCF9F28410C2F00BDE125 /* ScanView.swift in Sources */,
+				7DA9A9B9280582A1006C4693 /* CountryDetails.swift in Sources */,
+				7D9B178E2868BC2F0069B77C /* CoreDataManager.swift in Sources */,
 				7D9E66E128266C4500272B44 /* LocationManager.swift in Sources */,
 				7DB4436F27F463AF007AD6CD /* EmptyStateView.swift in Sources */,
 				7D75807527D75FA8004BBC08 /* CommonFont.swift in Sources */,
+				7D3B44F928579666005D4373 /* CovidCertificateDecoder.swift in Sources */,
 				7D104575282EB99A005F28F5 /* LatestNewsListItemView.swift in Sources */,
 				7D10456A282D3000005F28F5 /* MapManager.swift in Sources */,
 				7D9E7B5C27EB71CB003E95DF /* HomeViewModel.swift in Sources */,
 				7D99A9F42768F3E000356849 /* ColorExtension.swift in Sources */,
 				7D780B4D27BFB90900BDC41A /* CountrySelectionRepositoryMock.swift in Sources */,
+				7D9B17932868C56B0069B77C /* CovidCertificatesContainer.xcdatamodeld in Sources */,
 				7D104584282EBC30005F28F5 /* WebView.swift in Sources */,
 				7D7474EF277B5C2F001AEB60 /* LottieView.swift in Sources */,
 				7DC4F36027E8DB7D00EE7521 /* WorldwideResponseItem.swift in Sources */,
@@ -914,6 +1039,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coronavirus App/Preview Content\"";
@@ -921,6 +1047,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Coronavirus-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is required for QR scanning.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your location is required for route calculating";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required for route calculating";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -934,8 +1061,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.josipjuhasz.coronavirusapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josipjuhasz.coronavirusapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -947,6 +1075,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coronavirus App/Preview Content\"";
@@ -954,6 +1083,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Coronavirus-App-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera is required for QR scanning.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your location is required for route calculating";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is required for route calculating";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -967,8 +1097,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.josipjuhasz.coronavirusapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josipjuhasz.coronavirusapplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1007,6 +1138,14 @@
 				kind = branch;
 			};
 		};
+		7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/EUDCCKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		7D6BDBD82774C64200426006 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1023,12 +1162,45 @@
 			package = 7D104576282EB9C0005F28F5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
+		7D3B44EB2857923A005D4373 /* EUDCC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */;
+			productName = EUDCC;
+		};
+		7D3B44ED2857923A005D4373 /* EUDCCDecoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */;
+			productName = EUDCCDecoder;
+		};
+		7D3B44EF2857923A005D4373 /* EUDCCValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */;
+			productName = EUDCCValidator;
+		};
+		7D3B44F12857923A005D4373 /* EUDCCVerifier */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D3B44EA2857923A005D4373 /* XCRemoteSwiftPackageReference "EUDCCKit" */;
+			productName = EUDCCVerifier;
+		};
 		7D6BDBD92774C64200426006 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7D6BDBD82774C64200426006 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		7D9B17912868C56B0069B77C /* CovidCertificatesContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D9B17922868C56B0069B77C /* CovidCertificatesContainer.xcdatamodel */,
+			);
+			currentVersion = 7D9B17922868C56B0069B77C /* CovidCertificatesContainer.xcdatamodel */;
+			path = CovidCertificatesContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7D6F5BD927679F53008148D7 /* Project object */;
 }
