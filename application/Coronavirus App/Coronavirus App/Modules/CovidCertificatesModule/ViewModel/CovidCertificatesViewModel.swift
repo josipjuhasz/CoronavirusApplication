@@ -77,7 +77,6 @@ class CovidCertificatesViewModel: ObservableObject {
                 }
                 return Result.success(certificates)
             }
-            .receive(on: RunLoop.main)
             .sink { _ in } receiveValue: { [weak self] result in
                 switch result {
                 case .success(let certificates):
@@ -98,7 +97,6 @@ class CovidCertificatesViewModel: ObservableObject {
                 return publisher
             }
             .map { $0 }
-            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { [weak self] result in
                 switch result {

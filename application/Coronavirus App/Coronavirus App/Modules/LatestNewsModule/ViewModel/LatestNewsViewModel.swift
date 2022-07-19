@@ -49,7 +49,6 @@ class LatestNewsViewModel: ObservableObject {
         
                 return self.getLatestNewsPublisher(value)
             }
-            .receive(on: RunLoop.main)
             .map { [weak self] response -> Result<([LatestNewsDetails], Bool), ErrorType> in
                 guard let self = self else {
                     return Result.failure(ErrorType.general)

@@ -41,7 +41,6 @@ class MapViewModel: ObservableObject {
                     return self.worldwidePipeline()
                 }
             }
-            .receive(on: RunLoop.main)
             .sink { [weak self] response in
                 guard let self = self else { return }
                 
@@ -62,7 +61,6 @@ class MapViewModel: ObservableObject {
     private func countryPipeline(name: String) -> AnyPublisher<Result<MapDomainItem, ErrorType>, Never> {
         repository
             .getCountryData(for: name)
-            .receive(on: RunLoop.main)
             .tryMap { result -> Result<MapDomainItem, ErrorType> in
                 switch result {
                 case .success(let data):
@@ -85,7 +83,6 @@ class MapViewModel: ObservableObject {
     private func worldwidePipeline() -> AnyPublisher<Result<MapDomainItem, ErrorType>, Never> {
         repository
             .getWorldwideData()
-            .receive(on: RunLoop.main)
             .flatMap { [weak self] result -> AnyPublisher<Result<MapDomainItem, ErrorType>, Never> in
                 guard let self = self else {
                     return Just(Result.failure(ErrorType.general)).eraseToAnyPublisher()

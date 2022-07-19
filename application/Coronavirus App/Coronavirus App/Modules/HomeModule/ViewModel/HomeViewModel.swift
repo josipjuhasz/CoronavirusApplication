@@ -38,7 +38,6 @@ class HomeViewModel: ObservableObject {
                 }
                 self.loader = true
                 self.error = nil
-                
                 switch value {
                 case let .country(name):
                     return self.countryPipeline(name: name)
@@ -47,7 +46,6 @@ class HomeViewModel: ObservableObject {
                     return self.worldwidePipeline()
                 }
             }
-            .receive(on: RunLoop.main)
             .sink { [weak self] response in
                 guard let self = self else { return }
                 switch response {

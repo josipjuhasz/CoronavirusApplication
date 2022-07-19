@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class MapDomainItem: StatisticsDomainItem {
+class MapDomainItem: StatisticsDomainItem, Equatable {
     
     var countryCoordinates: [CountryCoordinates]?
     var worldwideItems: [CountryDayOneResponseItem]?
@@ -65,5 +65,9 @@ class MapDomainItem: StatisticsDomainItem {
         
         worldwideItems = []
         return newItems
+    }
+    
+    static func == (lhs: MapDomainItem, rhs: MapDomainItem) -> Bool {
+        return lhs.confirmedCases == rhs.confirmedCases
     }
 }

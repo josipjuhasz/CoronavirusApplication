@@ -41,7 +41,6 @@ class CountrySelectionViewModel: ObservableObject {
                 
                 return self.repository.getCountriesList()
             }
-            .receive(on: RunLoop.main)
             .sink { [weak self] result in
                 guard let self = self else { return }
                 
